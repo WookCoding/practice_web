@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
 input:focus {
-    outline:  3px solid #e1e1e1;
+    outline:  3px solid #a3c4f3;
+    border: none;
 }
-
 
 .main-box {
     position: relative;
@@ -203,12 +203,12 @@ input:focus {
 
 .login-button {
     color: #fff;
-    background-color: #00c7ae;
-    border-color: #00c7ae;
+    background-color: #8eecf5;
+    border-color: #8eecf5;
 }
 
 .login-button:hover {
-    background-color: #fa5963;
+    background-color: #cfbaf0;
 }
 
 .join-box {
