@@ -28,10 +28,10 @@ h1 {
 }
 
 fieldset {
-    border : none;
+    border: none;
     min-width: 0;
     padding: 0;
-        margin: 0;
+    margin: 0;
 }
 
 legend {
@@ -46,23 +46,27 @@ legend {
     white-space: normal;
 }
 
-input, button {
+input,
+button {
     margin: 0;
     font-family: inherit;
 }
 
-.text-input:focus, .password-input:focus {
-    outline: 3px solid #e1e1e1;
+.text-input:focus,
+.password-input:focus {
+    outline: 3px solid #a3c4f3;
 }
 
-.text-input::placeholder, .password-input::placeholder{
+.text-input::placeholder,
+.password-input::placeholder {
     color: #c8c8c8;
     font-weight: 100;
+    font-size: 0.9em;
 }
 
 ul {
-    margin : 0;
-    padding : 0;
+    margin: 0;
+    padding: 0;
 }
 
 ul li {
@@ -78,8 +82,34 @@ button {
 }
 
 .body-layout {
-    background-color: #fafafa;
-        padding: 5rem 0;
+    padding: 5rem 0;
+}
+
+.logo-box {
+    display: flex;
+    place-content: stretch flex-start;
+    flex-shrink: 0;
+    flex-direction: row;
+    box-sizing: border-box;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.logo-container {
+    display: flex;
+    align-content: stretch;
+    flex-shrink: 1;
+    flex-direction: column;
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 0px;
+}
+
+.logo {
+    width: 200px;
 }
 
 .form-layout {
@@ -90,7 +120,7 @@ button {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 0.0625rem solid rgba(0,0,0,.125);
+    border: 0.0625rem solid rgba(0, 0, 0, .125);
     border-radius: 0.25rem;
 }
 
@@ -122,7 +152,7 @@ button {
 .form-label {
     font-size: 1rem;
     padding-bottom: 0.375rem;
-    padding-top: 0!important;
+    padding-top: 0 !important;
     margin-bottom: 0;
     line-height: 1.5;
 }
@@ -145,7 +175,7 @@ button {
     background-clip: padding-box;
     border: 0.0625rem solid #e1e1e1;
     border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .all-check {
@@ -162,7 +192,8 @@ button {
     min-height: 1.5rem;
 }
 
-.custom-control-label::after, .custom-control-label::before {
+.custom-control-label::after,
+.custom-control-label::before {
     position: absolute;
     top: 0.125rem;
     left: -2rem;
@@ -177,7 +208,7 @@ button {
     height: 1.25rem;
 }
 
-input[type=checkbox]{
+input[type=checkbox] {
     box-sizing: border-box;
     padding: 0;
 }
@@ -199,15 +230,16 @@ input[type=checkbox]{
 .custom-checkbox .custom-control-label::before {
     top: 0;
     left: -1.375rem;
-    background-color: #e1e1e1;
     border: none;
+    background-size: 20px;
     border-radius: 2px;
     background-position: center;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9IiNFMUUxRTEiIHJ4PSIyIi8+PHBhdGggc3Ryb2tlPSIjRkZGIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTUgOS4yMTlMOC4zIDEyLjVsNS44NjctNS44MzMiLz48L2c+PC9zdmc+');
+    background-image: url('/static/img/join/check-no.png');
 }
 
-.custom-checkbox .custom-control-label::after, .custom-checkbox .custom-control-label:before {
-     width: 1.25rem;
+.custom-checkbox .custom-control-label::after,
+.custom-checkbox .custom-control-label:before {
+    width: 1.25rem;
     height: 1.25rem;
     padding: 0.1875rem;
 }
@@ -222,10 +254,11 @@ span.all-check-label {
 }
 
 .custom-control-label::after {
-        background: no-repeat 50%/50% 50%;
+    background: no-repeat 50%/50% 50%;
 }
 
-.custom-control-label::after, .custom-control-label::before {
+.custom-control-label::after,
+.custom-control-label::before {
     position: absolute;
     top: 0.125rem;
     left: -2rem;
@@ -235,7 +268,8 @@ span.all-check-label {
     content: "";
 }
 
-.custom-checkbox .custom-control-label::after, .custom-checkbox .custom-control-label::before {
+.custom-checkbox .custom-control-label::after,
+.custom-checkbox .custom-control-label::before {
     width: 14px;
     height: 14px;
     padding: 0.1875rem;
@@ -248,8 +282,9 @@ span.all-check-label {
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
     border: none;
-    background-color: transparent;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9IiMwMEM3QUUiIHJ4PSIyIi8+PHBhdGggc3Ryb2tlPSIjRkZGIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTUgOS4yMTlMOC4zIDEyLjVsNS44NjctNS44MzMiLz48L2c+PC9zdmc+);
+    background-color: #8eecf5;
+    background-size: 20px;
+    background-image: url('/static/img/join/check-ok.png');
 }
 
 .custom-control-input:checked~.custom-control-label::after {
@@ -257,7 +292,7 @@ span.all-check-label {
 }
 
 
-.terms-container{
+.terms-container {
     height: 100%;
     min-height: 9rem;
     margin-top: 0.9375rem;
@@ -273,7 +308,8 @@ span.all-check-label {
     margin: 0;
 }
 
-.term-item .term-label, .term-item button {
+.term-item .term-label,
+.term-item button {
     font-size: .875rem;
     color: #737373;
 }
@@ -283,7 +319,7 @@ span.all-check-label {
     height: 1.25rem;
 }
 
-#detail-button{
+#detail-button {
     color: #b5b5b5;
 }
 
@@ -315,24 +351,24 @@ span.all-check-label {
 
 .btn-primary {
     color: #fff;
-    background-color: #00c7ae;
-    border-color: #00c7ae;
+    background-color: #8eecf5;
+    border-color: #8eecf5;
 }
 
 .btn {
     font-weight: 500;
 }
 
-.btn-submit{
-    width : 100%;
+.btn-submit {
+    width: 100%;
 }
 
 .btn-facebook {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #1876f1; 
-    border-color : #1876f1
+    background-color: #1876f1;
+    border-color: #1876f1
 }
 
 .btn-facebook:hover {
@@ -370,7 +406,7 @@ button.btn-facebook span {
     width: 100%;
 }
 
-.btn-secondary{
+.btn-secondary {
     position: absolute;
     top: 0;
     right: 0;
@@ -384,16 +420,17 @@ button.btn-facebook span {
     font-weight: 400;
 }
 
-.float-button-right{
+.float-button-right {
     position: relative;
 }
-.password-show{
+
+.password-show {
     font-size: .8rem;
 }
 
 #header {
     position: sticky;
-    top:0;
+    top: 0;
     z-index: 100;
 }
 
@@ -418,15 +455,17 @@ button.btn-facebook span {
     .form-control {
         width: 100%;
     }
+
     .mobile-title-width {
-        max-width: 60%!important;
+        max-width: 60% !important;
     }
 }
+
 .mobile-title-width {
     max-width: 100%;
 }
 
 input::placeholder {
-    font-weight: 500!important;
-    color: #c8c8c8!important;
+    font-weight: 500 !important;
+    color: #c8c8c8 !important;
 }

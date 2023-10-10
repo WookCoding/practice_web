@@ -21,6 +21,7 @@ button {
 
 input::placeholder {
     font-family: 'Noto Sans KR', sans-serif;
+    color: #e1e1e1;
     font-weight: 500;
     font-size: 0.9em;
 }
