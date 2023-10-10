@@ -18,7 +18,7 @@ id.blur(() => {
 
 // 비밀번호 입력했는지 검사
 password.blur(() => {
-    if(id.val()){
+    if(password.val()){
         passwordErrorMsg.css("display", "none");
         check[1] = true;
     }else {
