@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입페이지</title>
+	<link rel="stylesheet" href="/static/css/join/join.css">
+</head>
+<body>
+	<div>
+		<div id="header"></div>
+		<div class = "body-layout">
+			<div class="mobile-title-width">
+				<h1>숨고에 오신 것을 환영합니다</h1>
+			</div>
+			<!-- 입력창 박스-->
+		<div class = "form-layout">
+			<div>
+			<!-- 입력창 레이아웃-->
+				<div class ="form-row">
+					<!-- 입력창들-->
+					<div class ="input-data">
+						<!-- 이름 입력 -->
+						<fieldset class="text-field">
+							<legend class ="form-label">이름</legend>
+							<div  class ="float-button-right input-group">
+								<input id="userName" class= "text-input form-control" type = "text" name ="userName" placeholder="이름(실명)을 입력해주세요">
+							</div>
+							<span class ="invalid-feedback name-check" style ="color : red;"></span>
+						</fieldset>
+					</div>
+					<div class ="input-data">
+						<!-- 이메일 입력 -->
+						<fieldset class="text-field">
+							<legend class ="form-label">이메일</legend>
+							<div  class ="float-button-right input-group">
+								<input id ="userEmail" class= "text-input form-control" type = "text" name ="userEmail" placeholder="example@soomgo.com">
+							</div>
+							<span class ="invalid-feedback email-check" style ="color : red;"></span>
+						</fieldset>
+					</div>
+					<div class ="input-data">
+						<!-- 비밀번호 입력 -->
+						<fieldset class="text-field">
+							<legend class ="form-label">비밀번호</legend>
+							<div>
+								<div class ="float-button-right input-group" style="position: relative;">
+									<input id ="userPassword" class= "text-input form-control" type = "password" name ="userPassword" placeholder="영문+숫자 조합 8자리 이상 입력해주세요">
+									<button type ="button" class ="btn password-show btn-secondary">표시</button>
+								</div>
+							</div>
+							<span class ="invalid-feedback pw-check" style ="color : red;"></span>
+						</fieldset>
+					</div>
+					<div class ="input-data">
+					<!-- 선택하는 구역 -->
+						<section style ="display : block;">
+							<!-- 전체 동의 -->
+							<div class ="all-check custom-checkbox custom-control">
+								<input class ="custom-control-input" type="checkbox" id = "allSelect">
+								<label class ="custom-control-label" for = "allSelect">
+									<span class = "all-check-label">전체동의</span>
+								</label>
+							</div>
+							<div class ="terms-container">
+								<!-- 3가지 선택 이용약관, 개인정보 이용 동의, 만14세이상 -->
+								<div>
+									<ul>
+										<li class = "term-item">
+											<!-- 이용약관 -->
+											<div class = "custom-control custom-checkbox">
+												<input class ="custom-control-input"  type = "checkbox" id = "useCheck" name ="check">
+												<label class ="custom-control-label" for="useCheck">
+													<p class ="term-label" style="padding-left: 7px;">(필수) 이용약관 동의</p>
+												</label>
+											</div>
+											<button class = "btn btn-none" id ="detail-button">보기</button>
+										</li>
+										<li class = "term-item" style = "margin-top: 1rem;">
+											<!-- 개인정보 이용 동의 -->
+											<div class = "custom-control custom-checkbox">
+												<input class ="custom-control-input" type = "checkbox" id = "useAgree" name ="check">
+												<label class ="custom-control-label" for="useAgree">
+													<p class ="term-label" style="padding-left: 7px;"> (필수) 개인정보 수집 및 이용 동의</p>
+												</label>
+											</div>
+											<button id ="detail-button" class ="btn btn-none">보기</button>
+										</li>
+										<li class = "term-item" style = "margin-top: 1rem;">
+											<!-- 만14세이상 -->
+											<div class = "custom-control custom-checkbox">
+												<input class ="custom-control-input" type = "checkbox" id = "ageCheck" name ="check">
+												<label class ="custom-control-label" for="ageCheck">
+													<p class ="term-label" style="padding-left: 7px;">(필수) 14세 이상</p>
+												</label>
+											</div>
+											<button id ="detail-button" class ="btn btn-none">보기</button>
+										</li>
+									</ul>
+								</div>
+						</section>
+					</div>
+						<!-- 회원가입 버튼 --> 
+						<div class ="input-data">
+							<button class ="btn btn-signup btn-primary btn-submit">
+								<span>
+									회원가입
+								</span>
+							</button>
+						</div>
+						<!-- 페이스북으로 가입 버튼 -->
+						<div class ="input-data" style = "margin-top : 10px;">
+							<button class ="btn btn-signup btn-primary btn-submit btn-facebook">
+								<img src = "https://assets.cdn.soomgo.com/icons/icon-login-facebook-btn.svg">
+								<span>
+									Facebook으로 가입하기
+								</span>
+							</button>
+						</div>
+						<!-- 고수로 가입 -->
+						<div class ="input-data">
+							<a href="https://soomgo.com/pro" class ="pro-sign-up" style="text-decoration: none;">
+								고수로 가입하시나요? 
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#header").load("somGo-header.html");
+		$("#footer").load("somgo-footer.html");
+    });
+</script>
+</html>

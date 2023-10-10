@@ -66,6 +66,7 @@ input:focus {
 
 
 .header-margin {
+    margin-top: 10px;
     display: flex;
     place-content: stretch space-between;
     flex-shrink: 1;
