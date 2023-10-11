@@ -26,9 +26,57 @@ input::placeholder {
     font-size: 0.9em;
 }
 
+li, ul {
+    list-style: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
 a {
     cursor: pointer;
     text-decoration: none;
 }
 
+label {
+    display: inline-block;
+}
+
+.container {
+    width: 100%;
+    padding-right: 0.9375rem;
+    padding-left: 0.9375rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.main-box {
+    max-width: 100%;
+}
+
+input {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    overflow: visible;
+    outline: none;
+}
+
+textarea {
+    outline: none;
+}
+
+
+@media (min-width : 768px) {
+    .container {
+        max-width: 45rem;
+    }
+}
+
+@media (min-width : 1024px) {
+    .container {
+        max-width: 100%;
+    }
+}
 

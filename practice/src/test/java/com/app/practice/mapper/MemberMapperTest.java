@@ -15,7 +15,6 @@ public class MemberMapperTest {
     @Autowired
     private MemberMapper memberMapper;
 
-
     // 회원 가입
     @Test
     public void insertMemberTest() {

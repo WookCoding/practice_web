@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+.main-container {
+    max-width: 60.625rem;
+    padding-bottom: 5rem;
+    margin: auto;
+}
+
+.content-header-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 3.125rem;
+    margin-bottom: 1.875rem;
+    align-items: flex-end;
+}
+
+.content-header-title {
+    font-size: 2.125rem;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #323232;
+    margin: 0;
+}
+
+.write-button-container {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.write-button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 7.5rem;
+    height: 2.75rem;
+    padding: 0.625rem 1.3625rem 0.625rem 1.6125rem;
+    border-radius: 6px;
+    border: none;
+    background-color: rgb(207, 186, 240);
+}
+
+.write-button p {
+    color : #fff;
+    font-size: 1rem;
+}
+
+.pen-image {
+    width: 1rem;
+    height: 1rem;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(70deg) brightness(105%) contrast(101%);
+}
+
+.content-box {
+    padding-top: 0.625rem;
+}
+
+.content-ul {
+    display: flex;
+    margin: -1rem -0.5rem;
+    flex-wrap: wrap;
+}
+
+.content-ul li {
+    flex: 0 1 33.33%;
+}
+
+.content-container {
+    padding: 1rem 0.5rem;
+}
+
+.content-image-box {
+    margin: 0 0 1rem;
+    position: relative;
+    width: 100%;
+    padding-bottom: 66.7%;
+    border-radius: 8px;
+    border: 0.0625rem solid rgba(0,0,0,.05);
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.content-image-box img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.content-title {
+    max-height: 3em;
+    line-height: 1.5;
+    overflow: hidden;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #323232;
+    margin-bottom: 0.25rem;
+    cursor: pointer;
+}
+
+.content-writer {
+    max-height: 1.5em;
+    line-height: 1.5;
+    overflow: hidden;
+    font-size: .875rem;
+    font-weight: 400;
+    color: #737373;
+    margin: 0;
+    cursor: pointer;
+}
