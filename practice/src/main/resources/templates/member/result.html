@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>로그인 성공</h2>
+    <table>
+        <tr>
+            <td>번호</td>
+            <td>이름</td>
+            <td>아이디</td>
+        </tr>
+        <tr>
+            <td th:text="${memberVO.memberId}"></td>
+            <td th:text="${memberVO.memberName}"></td>
+            <td th:text="${memberVO.memberIdentification}"></td>
+        </tr>
+    </table>
+
+</body>
+</html>

@@ -234,7 +234,7 @@ input[type=checkbox] {
     background-size: 20px;
     border-radius: 2px;
     background-position: center;
-    background-image: url('/static/img/join/check-no.png');
+    background-image: url('/img/join/check-no.png');
 }
 
 .custom-checkbox .custom-control-label::after,
@@ -284,7 +284,7 @@ span.all-check-label {
     border: none;
     background-color: #8eecf5;
     background-size: 20px;
-    background-image: url('/static/img/join/check-ok.png');
+    background-image: url('/img/join/check-ok.png');
 }
 
 .custom-control-input:checked~.custom-control-label::after {

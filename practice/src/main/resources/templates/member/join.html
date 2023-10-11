@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입 페이지</title>
-	<link rel="stylesheet" href="/static/css/join/join.css">
+	<link rel="stylesheet" href="/css/join/join.css">
 </head>
 <body>
 	<div>
@@ -15,7 +15,7 @@
 					<div class="logo-container">
 						<a href="#"><!-- 메인페이지 링크 -->
 							<span>
-								<img src="/static/img/logo.png" class="logo">
+								<img src="/img/logo.png" class="logo">
 							</span>
 						</a>
 					</div>
@@ -23,7 +23,7 @@
 			</div>
 			<!-- 입력창 박스-->
 		<div class = "form-layout">
-			<div>
+			<form method="post" action="/member/join">
 			<!-- 입력창 레이아웃-->
 				<div class ="form-row">
 					<!-- 입력창들-->
@@ -32,7 +32,7 @@
 						<fieldset class="text-field">
 							<legend class ="form-label">이름</legend>
 							<div  class ="float-button-right input-group">
-								<input id="userName" class= "text-input form-control" type = "text" name ="userName" placeholder="이름(실명)을 입력해주세요">
+								<input id="userName" class= "text-input form-control" type = "text" name ="memberName" placeholder="이름(실명)을 입력해주세요">
 							</div>
 							<span class ="invalid-feedback name-check" style ="color : red;"></span>
 						</fieldset>
@@ -42,7 +42,7 @@
 						<fieldset class="text-field">
 							<legend class ="form-label">아이디</legend>
 							<div  class ="float-button-right input-group">
-								<input id ="identification" class= "text-input form-control" type = "text" name ="identification" placeholder="아이디를 입력해주세요">
+								<input id ="identification" class= "text-input form-control" type = "text" name ="memberIdentification" placeholder="아이디를 입력해주세요">
 							</div>
 							<span class ="invalid-feedback identification-check" style ="color : red;"></span>
 						</fieldset>
@@ -53,7 +53,7 @@
 							<legend class ="form-label">비밀번호</legend>
 							<div>
 								<div class ="float-button-right input-group" style="position: relative;">
-									<input id ="password" class= "text-input form-control" type = "password" name ="password" placeholder="영문+숫자 조합 8자리 이상 입력해주세요">
+									<input id ="password" class= "text-input form-control" type = "password" name ="memberPassword" placeholder="영문+숫자 조합 8자리 이상 입력해주세요">
 									<button type ="button" class ="btn password-show btn-secondary">표시</button>
 								</div>
 							</div>
@@ -120,12 +120,12 @@
 							</a>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 		<div id="footer"></div>
 	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-<script src="/static/js/join/join.js"></script>
+<script src="/js/join/join.js"></script>
 </html>
