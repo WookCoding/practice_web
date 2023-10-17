@@ -9,48 +9,49 @@
     <link rel="stylesheet" href="/css/board/boardWrite.css">
 </head>
 <body>
-    <div class="box">
-        <div class="container">
-            <div class="main-box">
-                <div class="main-container">
-                    <form action="/board/write" method="post">
-                        <div class="main-header-box">
-                            <div class="main-header-container">
-                                <button type="submit" class="register-button">등록</button>
+<div class="box">
+    <div class="container">
+        <div class="main-box">
+            <div class="main-container">
+                <form action="/board/write" method="post" enctype="multipart/form-data">
+                    <div class="main-header-box">
+                        <div class="main-header-container">
+                            <button type="submit" class="register-button">등록</button>
+                        </div>
+                    </div>
+                    <div class="image-input-box">
+                        <div class="image-input-container">
+                            <label class="image-icon" for="boardImage"></label>
+                            <div class="file-input-box">
+                                <input id="boardImage" type="file" class="file-input" multiple>
                             </div>
+                            <span class="image-count">0/15</span>
                         </div>
-                        <div class="image-input-box">
-                            <div class="image-input-container">
-                                <label class="image-icon" for="boardImage"></label>
-                                <div class="file-input-box">
-                                    <input id="boardImage" type="file" class="file-input">
-                                </div>
-                                <span class="image-count">0/15</span>
-                            </div>
+                    </div>
+                    <div class="title-box">
+                        <div class="title-container">
+                            <label class="title-input-box">
+                                <input type="text" class="title" name="boardTitle" placeholder="제목을 입력해주세요.">
+                            </label>
                         </div>
-                        <div class="title-box">
-                            <div class="title-container">
-                                <label class="title-input-box">
-                                    <input type="text" class="title" name="boardTitle" placeholder="제목을 입력해주세요.">
-                                </label>
-                            </div>
+                    </div>
+                    <div class="content-wrapper">
+                        <hr class="line">
+                    </div>
+                    <div class="sumnail-box">
+                        <div class="sumnail-container">
+<!--                            <div class="sumnail-view">-->
+<!--                                <img src="/img/board/cancel.png" class="cancel-image">-->
+<!--                                <img src="https://static.cdn.soomgo.com/upload/soomgo-life/057f0070-5754-4192-b714-a3128c3c1a81.png?h=80&w=80&webp=1"-->
+<!--                                     class="sumnail">-->
+<!--                            </div>-->
                         </div>
-                        <div class="content-wrapper">
-                            <hr class="line">
-                        </div>
-                        <div class="sumnail-box">
-                            <div class="sumnail-container">
-                                <div class="sumnail-view">
-                                    <img src="/img/board/cancel.png" class="cancel-image">
-                                    <img src="https://static.cdn.soomgo.com/upload/soomgo-life/057f0070-5754-4192-b714-a3128c3c1a81.png?h=80&w=80&webp=1" class="sumnail">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="board-content-box">
+                    </div>
+                    <div class="board-content-box">
                             <span class="text-body">
                                 <textarea class="contents" name="boardContent"></textarea>
                             </span>
-                            <span class="contents-info text-body">
+                        <span class="contents-info text-body">
                                 생활 속에서 궁금했던 모든 것을 물어보세요.
 
                                 예) 도어락 버튼이 작동을 안 하는데 왜 그런건가요?
@@ -59,12 +60,12 @@
                                 ※ 주제에 맞지 않는 글이나 커뮤니티 이용정책에 위배되는 글은 신고의 대상이 됩니다.
                                 ※ 일정 수 이상의 신고를 받으면 작성한 글이 숨김 및 삭제될 수 있습니다.
                             </span>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script th:inline="javascript">
@@ -72,9 +73,79 @@
 </script>
 <script>
     $(".register-button").click(() => {
+        if (!$(".title").val()) {
+            alert("제목 입력");
+            return false;
+        } else if (!$(".board-content").val()) {
+            alert("내용 입력");
+            return false;
+        }
+    })
 
-        console.log($(".title").val());
+</script>
+<script>
+    globalThis.uuids = [];
+    let files = [];
+    FileList.prototype.forEach = Array.prototype.forEach;
 
+    let $imageWrap = $(".sumnail-container");
+
+    $("input[type=file]").change(() => {
+        const $files = $("input[type=file]")[0].files;
+
+        let formData = new FormData();
+
+        $($files).each((i, file) => {
+            files.push(file);
+        })
+
+        $files.forEach((file, e) => {
+            formData.append("file", file);
+        })
+
+        $.ajax({
+            url: "/file/upload",
+            type: "post",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (uuids) {
+                $(uuids).each((i, uuid) => {
+                    globalThis.uuids.push(uuid);
+                });
+                let text = '';
+                $files.forEach((file, i) => {
+                    if (file.type.startsWith("image")) {
+                        text = `
+                                <div class="sumnail-view">
+                                    <img src="/img/board/cancel.png" class="cancel-image">
+                                    <img src="/file/display?fileName=${toStringByFormatting(new Date())}/t_${uuids[i]}_${file.name}"" class="sumnail">
+                                </div>
+                                `;
+                    }
+                    $imageWrap.append(text);
+                });
+            }
+        });
     });
+
+    // =================================================
+    function leftPad(value) {
+        if (value >= 10) {
+            return value;
+        }
+
+        return `0${value}`;
+    }
+
+    function toStringByFormatting(source, delimiter = '/') {
+        const year = source.getFullYear();
+        const month = leftPad(source.getMonth() + 1);
+        const day = leftPad(source.getDate());
+
+        return [year, month, day].join(delimiter);
+    }
+
+
 </script>
 </html>
