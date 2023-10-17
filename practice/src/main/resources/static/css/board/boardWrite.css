@@ -54,7 +54,7 @@
     height: 1.25rem;
     margin-right: 0.4375rem;
     object-fit: contain;
-    background: url('/static/img/board/camera.png') no-repeat 50%;
+    background: url('/img/board/camera.png') no-repeat 50%;
     cursor: pointer;
     margin-top: 0.11rem;
 }

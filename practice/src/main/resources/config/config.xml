@@ -3,5 +3,7 @@
 <configuration>
     <typeAliases>
         <typeAlias type="com.app.practice.domain.vo.member.MemberVO" alias="memberVO"></typeAlias>
+        <typeAlias type="com.app.practice.domain.vo.board.BoardVO" alias="boardVO"></typeAlias>
+        <typeAlias type="com.app.practice.domain.dto.BoardDTO" alias="boardDTO"></typeAlias>
     </typeAliases>
 </configuration>
