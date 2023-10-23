@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.app.practice.mapper.BoardFileMapper">
-    <insert id="insertFile" parameterType="boardDTO">
+    <insert id="insertFile" parameterType="boardFileVO">
         insert into tbl_board_file
             (board_file_original_name, board_file_uuid, board_file_path, board_id)
         values (#{boardFileOriginalName}, #{boardFileUuid}, #{boardFilePath}, #{boardId});

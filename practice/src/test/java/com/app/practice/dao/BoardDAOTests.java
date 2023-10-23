@@ -16,9 +16,5 @@ public class BoardDAOTests {
 
     @Test
     public void insertBoardTest(){
-        BoardDTO boardDTO = new BoardDTO();
-        boardDTO.setBoardContent("테스트 내용 2");
-        boardDTO.setBoardTitle("테스트 제목 2");
-        boardDTO.setMemberId(1L);
     }
 }

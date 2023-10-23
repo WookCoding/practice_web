@@ -16,7 +16,7 @@
                 <form action="/board/write" method="post" name="form" enctype="multipart/form-data">
                     <div class="main-header-box">
                         <div class="main-header-container">
-                            <button type="submit" class="register-button">등록</button>
+                            <button type="button" class="register-button">등록</button>
                         </div>
                     </div>
                     <div class="image-input-box">
@@ -66,18 +66,6 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script th:inline="javascript">
     let memberId = [[${session.memberId}]];
-</script>
-<script>
-    $(".register-button").click(() => {
-        if (!$(".title").val()) {
-            alert("제목 입력");
-            return false;
-        } else if (!$(".board-content").val()) {
-            alert("내용 입력");
-            return false;
-        }
-    })
-
 </script>
 <script>
     globalThis.uuids = [];
@@ -158,26 +146,26 @@
     $(".register-button").click(() => {
         let text = "";
 
-        let boardTitle = $(".title").val();
-        let boardContent = $(".contents").val();
+        if (!$(".title").val()) {
+            alert("제목 입력");
+            return false;
+        } else if (!$(".contents").val()) {
+            alert("내용 입력");
+            return false;
+        }
 
         files.forEach((file, i) => {
             text +=
                 `
                 <input type="hidden" name="boardFileVOS[${i}].boardFileOriginalName" value="${file.name}">
-                <input type="hidden" name="boardFileVOS[${i}].boardFileVOSFileUuid" value="${globalThis.uuids[i]}">
-                <input type="hidden" name="boardFileVOS[${i}].boardFileVOSFilePath" value="${toStringByFormatting(new Date())}">
+                <input type="hidden" name="boardFileVOS[${i}].boardFileUuid" value="${globalThis.uuids[i]}">
+                <input type="hidden" name="boardFileVOS[${i}].boardFilePath" value="${toStringByFormatting(new Date())}">
                 `;
         });
         $("form[name=form]").append(text);
         $("form[name=form]").submit();
 
     });
-
-
-
-
-
 
     // =================================================
     function leftPad(value) {

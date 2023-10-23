@@ -1,11 +1,8 @@
 package com.app.practice.domain.dto;
 
-import com.app.practice.domain.vo.board.BoardFileVO;
 import com.app.practice.domain.vo.board.BoardVO;
-import lombok.Builder;
+import com.app.practice.domain.vo.file.BoardFileVO;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;

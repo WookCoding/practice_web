@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/board/*")
 @RequiredArgsConstructor
-@Slf4j
 public class BoardController {
 
     private final BoardService boardService;
@@ -29,9 +28,7 @@ public class BoardController {
     public RedirectView write(BoardDTO boardDTO, HttpSession session){
         Long memberId = (Long) session.getAttribute("memberId");
         boardDTO.setMemberId(memberId);
-        log.info(boardDTO.getBoardFileVOS().get(0).getBoardFilePath());
         boardService.write(boardDTO);
-
         return new RedirectView("/board/boardList");
     }
 
