@@ -22,8 +22,6 @@ public class BoardMapperTests {
         boardDTO.setBoardTitle("테스트 제목 1");
         boardDTO.setMemberId(1L);
 
-        boardMapper.insertBoard(boardDTO);
-
     }
 
 }

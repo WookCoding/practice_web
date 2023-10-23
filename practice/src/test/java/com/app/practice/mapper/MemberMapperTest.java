@@ -29,8 +29,8 @@ public class MemberMapperTest {
     @Test
     public void loginTest() {
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberIdentification("a123456");
-        memberVO.setMemberPassword(new String(Base64.getEncoder().encode("a123456123".getBytes())));
+        memberVO.setMemberIdentification("hs1234");
+        memberVO.setMemberPassword(new String(Base64.getEncoder().encode("a123456789".getBytes())));
         log.info("회원 번호 :::::::" + memberMapper.login(memberVO));
     }
 

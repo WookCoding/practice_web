@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 public class BoardVO {
 
     private Long boardId;
+    private Long memberId;
     private String boardTitle;
     private String boardContent;
     private LocalDateTime boardRegisterDate;

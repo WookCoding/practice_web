@@ -6,25 +6,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
-@RequiredArgsConstructor
-public class MemberService {
-
-    private final MemberDAO memberDAO;
+public interface MemberService {
 
     // 회원 가입
-    public void insertMember(MemberVO memberVO) {
-        memberDAO.insertMember(memberVO);
-    }
+    public void insertMember(MemberVO memberVO);
 
     // 로그인
-    public Long login(MemberVO memberVO){
-        return memberDAO.login(memberVO);
-    }
+    public Long login(MemberVO memberVO);
 
     // 회원 정보 찾기
-    public MemberVO findMember(Long memberId) {
-        return memberDAO.findMember(memberId);
-    };
+    public MemberVO findMember(Long memberId);
 
 }

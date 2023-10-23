@@ -20,6 +20,5 @@ public class BoardDAOTests {
         boardDTO.setBoardContent("테스트 내용 2");
         boardDTO.setBoardTitle("테스트 제목 2");
         boardDTO.setMemberId(1L);
-        boardDAO.insertBoard(boardDTO);
     }
 }

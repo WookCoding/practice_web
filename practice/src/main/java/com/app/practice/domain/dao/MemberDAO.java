@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class MemberDAO {
 
-    @Autowired
     private MemberMapper memberMapper;
 
     // 회원 가입

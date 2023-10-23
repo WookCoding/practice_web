@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.app.practice.mapper.BoardMapper">
-    <insert id="insertBoard" parameterType="boardDTO">
+
+    <!-- 작성하기 -->
+    <insert id="insertBoard" parameterType="boardVO">
         insert into tbl_board
         (board_title, board_content, member_id)
         values (#{boardTitle}, #{boardContent}, #{memberId})
     </insert>
+
+    <!-- 현재 시퀀스 가져오기 -->
+    <select id="currentSequence" resultType="Long">
+        select last_insert_id() from tbl_board limit 0, 1;
+    </select>
+
 </mapper>

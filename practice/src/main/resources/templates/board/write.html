@@ -13,7 +13,7 @@
     <div class="container">
         <div class="main-box">
             <div class="main-container">
-                <form action="/board/write" method="post" enctype="multipart/form-data">
+                <form action="/board/write" method="post" name="form" enctype="multipart/form-data">
                     <div class="main-header-box">
                         <div class="main-header-container">
                             <button type="submit" class="register-button">등록</button>
@@ -40,11 +40,7 @@
                     </div>
                     <div class="sumnail-box">
                         <div class="sumnail-container">
-<!--                            <div class="sumnail-view">-->
-<!--                                <img src="/img/board/cancel.png" class="cancel-image">-->
-<!--                                <img src="https://static.cdn.soomgo.com/upload/soomgo-life/057f0070-5754-4192-b714-a3128c3c1a81.png?h=80&w=80&webp=1"-->
-<!--                                     class="sumnail">-->
-<!--                            </div>-->
+                            <!--썸네일 들어가는 곳-->
                         </div>
                     </div>
                     <div class="board-content-box">
@@ -87,9 +83,10 @@
     globalThis.uuids = [];
     let files = [];
     FileList.prototype.forEach = Array.prototype.forEach;
-
     let $imageWrap = $(".sumnail-container");
 
+
+    //  썸네일
     $("input[type=file]").change(() => {
         const $files = $("input[type=file]")[0].files;
 
@@ -128,6 +125,59 @@
             }
         });
     });
+
+
+    //  파일 첨부 취소
+    $(".sumnail-container").on("click", ".cancel-image", function(e){
+        const dataTransfer = new DataTransfer();
+        // 이미지 태그 부모
+        let target = $(e.currentTarget).parent();
+        let fileArray = Array.from(files);
+        let imageBox = target.parent();
+        let i = imageBox.find("div").index(target);
+        files = [];
+        globalThis.uuids.splice(i , 1);
+        fileArray.splice(i, 1);
+
+        fileArray.forEach(file => {
+            if(file.name == null && file.name == undefined){
+                dataTransfer.items.add(file);
+            }else {
+                files.push(file);
+            }
+            dataTransfer.files.forEach((file, i) =>{
+                files.push(file);
+            });
+        });
+
+        target.remove();
+    });
+
+
+    // 작성 완료
+    $(".register-button").click(() => {
+        let text = "";
+
+        let boardTitle = $(".title").val();
+        let boardContent = $(".contents").val();
+
+        files.forEach((file, i) => {
+            text +=
+                `
+                <input type="hidden" name="boardFileVOS[${i}].boardFileOriginalName" value="${file.name}">
+                <input type="hidden" name="boardFileVOS[${i}].boardFileVOSFileUuid" value="${globalThis.uuids[i]}">
+                <input type="hidden" name="boardFileVOS[${i}].boardFileVOSFilePath" value="${toStringByFormatting(new Date())}">
+                `;
+        });
+        $("form[name=form]").append(text);
+        $("form[name=form]").submit();
+
+    });
+
+
+
+
+
 
     // =================================================
     function leftPad(value) {

@@ -1,10 +1,15 @@
 package com.app.practice.domain.dto;
 
 import com.app.practice.domain.vo.board.BoardFileVO;
+import com.app.practice.domain.vo.board.BoardVO;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Component
@@ -17,6 +22,16 @@ public class BoardDTO {
     private String boardContent;
     private LocalDateTime boardRegisterDate;
     private LocalDateTime boardUpdateDate;
-    private BoardFileVO boardFileVO;
+
+    private List<BoardFileVO> boardFileVOS;
+
+    public BoardVO toBoardVO(){
+        BoardVO boardVO = new BoardVO();
+        boardVO.setBoardTitle(boardTitle);
+        boardVO.setBoardId(boardId);
+        boardVO.setBoardContent(boardContent);
+        boardVO.setMemberId(memberId);
+        return boardVO;
+    }
 
 }
