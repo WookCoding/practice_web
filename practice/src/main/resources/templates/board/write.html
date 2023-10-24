@@ -78,6 +78,12 @@
     $("input[type=file]").change(() => {
         const $files = $("input[type=file]")[0].files;
 
+        if($files.length>= 15){
+            alert("최대 15개만 넣을 수 있습니다.");
+            return false;
+        }
+        fileSize($files);
+
         let formData = new FormData();
 
         $($files).each((i, file) => {
@@ -104,7 +110,7 @@
                         text = `
                                 <div class="sumnail-view">
                                     <img src="/img/board/cancel.png" class="cancel-image">
-                                    <img src="/file/display?fileName=${toStringByFormatting(new Date())}/t_${uuids[i]}_${file.name}"" class="sumnail">
+                                    <img src="/file/display?fileName=${toStringByFormatting(new Date())}/t_${uuids[i]}_${file.name}" class="sumnail">
                                 </div>
                                 `;
                     }
@@ -137,7 +143,7 @@
                 files.push(file);
             });
         });
-
+        fileSize(files);
         target.remove();
     });
 
@@ -182,6 +188,12 @@
         const day = leftPad(source.getDate());
 
         return [year, month, day].join(delimiter);
+    }
+
+    function fileSize(files){
+        let fileSize = files.length;
+        const $filesCountText = $(".image-count");
+        $filesCountText.text(fileSize + "/15");
     }
 
 

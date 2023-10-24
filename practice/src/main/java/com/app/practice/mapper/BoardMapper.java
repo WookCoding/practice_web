@@ -4,6 +4,8 @@ import com.app.practice.domain.dto.BoardDTO;
 import com.app.practice.domain.vo.board.BoardVO;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface BoardMapper {
 
@@ -12,5 +14,8 @@ public interface BoardMapper {
 
     // 현재 시퀀스 가져 오기
     public Long currentSequence();
+
+    // 게시판 목록
+    public List<BoardVO> findBoardVO();
 
 }

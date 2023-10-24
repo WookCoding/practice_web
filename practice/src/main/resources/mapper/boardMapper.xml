@@ -14,4 +14,10 @@
         select last_insert_id() from tbl_board limit 0, 1;
     </select>
 
+    <!-- 게시판 목록 가져오기 -->
+    <select id="findBoardVO" resultType="boardVO">
+        SELECT board_id, board_title, board_content, board_register_date, board_update_date, member_id
+        FROM tbl_board;
+    </select>
+
 </mapper>

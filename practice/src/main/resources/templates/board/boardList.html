@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판 목록</title>
-    <link rel="stylesheet" href="/static/css/main.css">
-    <link rel="stylesheet" href="/static/css/board/boardList.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/board/boardList.css">
 </head>
 <body>
     <div class="box">
@@ -18,9 +18,9 @@
                             <h1 class="content-header-title">커뮤니티</h1>
                             <div class="write-button-box">
                                 <div class="write-button-container">
-                                    <button class="write-button">
+                                    <button class="write-button" onclick="location.href='/board/write'">
                                         <p>글쓰기</p>
-                                        <img class="pen-image" src="/static/img/board/pen.png" alt="">
+                                        <img class="pen-image" src="/img/board/pen.png" alt="">
                                     </button>
                                 </div>
                             </div>
@@ -28,17 +28,17 @@
                     </div>
                     <article class="content-box">
                         <ul class="content-ul">
-                            <li>
-                                <section class="content-container">
-                                    <a href="#">
-                                        <div class="content-image-box">
-                                            <img src="https://static.cdn.soomgo.com/upload/community/2b574ac2-92d3-45b1-8b5a-fdc622749579.png?webp=1">
-                                        </div>
-                                        <h3 class="content-title">게시판 제목</h3>
-                                        <p class="content-writer">작성자명</p>
-                                    </a>
-                                </section>
-                            </li>
+<!--                            <li>-->
+<!--                                <section class="content-container">-->
+<!--                                    <a href="#">-->
+<!--                                        <div class="content-image-box">-->
+<!--                                            <img src="https://static.cdn.soomgo.com/upload/community/2b574ac2-92d3-45b1-8b5a-fdc622749579.png?webp=1">-->
+<!--                                        </div>-->
+<!--                                        <h3 class="content-title">게시판 제목</h3>-->
+<!--                                        <p class="content-writer">작성자명</p>-->
+<!--                                    </a>-->
+<!--                                </section>-->
+<!--                            </li>-->
                         </ul>
                     </article>
                 </section>
@@ -46,4 +46,48 @@
         </div>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script th:inline="javascript">
+    let memberId = [[${session.memberId}]];
+    let boardList = [[${boardDTOS}]];
+    console.log(boardList);
+</script>
+<script>
+    loadBoardList(boardList);
+
+    function loadBoardList(boardList){
+        let text = '';
+
+        $(boardList).each((i, boardDTO) => {
+            let boardFileDTOS = boardDTO.boardFileVOS;
+
+            text += `
+                            <li>
+                                <section class="content-container">
+                                    <a href="/board/board?boardId=${i}">
+                                        <div class="content-image-box">
+                                        `;
+            if(boardFileDTOS.length == 0){
+                text+=                      `
+                                            <img src="/img/no-image.png" style="object-fit: contain">
+                                         `;
+            }else {
+                text+=                      `
+                                            <img src="/file/display?fileName=${boardFileDTOS[0].boardFilePath}/${boardFileDTOS[0].boardFileUuid}_${boardFileDTOS[0].boardFileOriginalName}">
+                                         `;
+            }
+
+           text+=  `                            </div>
+                                        <h3 class="content-title">${boardDTO.boardTitle}</h3>
+                                        <p class="content-writer">${boardDTO.memberId}</p>
+                                    </a>
+                                </section>
+                            </li>
+    `;
+        });
+
+        $(".content-ul").append(text);
+    }
+
+</script>
 </html>

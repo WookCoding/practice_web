@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/board/*")
@@ -36,6 +37,9 @@ public class BoardController {
     @GetMapping("boardList")
     public void boardList(Model model, HttpSession session){
         Long memberId = (Long)session.getAttribute("memberId");
+        List<BoardDTO> boardDTOS = boardService.boardList();
+
+        model.addAttribute("boardDTOS", boardDTOS);
         model.addAttribute("memberId", memberId);
     }
 

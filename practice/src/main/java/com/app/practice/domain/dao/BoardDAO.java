@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class BoardDAO {
@@ -23,4 +25,6 @@ public class BoardDAO {
         return boardMapper.currentSequence();
     }
 
+    // 게시글 목록 가져오기
+    public List<BoardVO> findBoardVO(){ return boardMapper.findBoardVO(); }
 }

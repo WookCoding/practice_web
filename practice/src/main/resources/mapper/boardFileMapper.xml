@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.app.practice.mapper.BoardFileMapper">
+
+    <!-- 작성시 들어 오는 파일-->
     <insert id="insertFile" parameterType="boardFileVO">
         insert into tbl_board_file
             (board_file_original_name, board_file_uuid, board_file_path, board_id)
         values (#{boardFileOriginalName}, #{boardFileUuid}, #{boardFilePath}, #{boardId});
     </insert>
+
+    <!-- 각 게시판의 파일 목록 -->
+    <select id="findFiles" parameterType="long" resultType="boardFileVO">
+        select board_file_id, board_file_original_name, board_file_uuid, board_file_path
+        from tbl_board_file where board_id = #{boardId};
+    </select>
 </mapper>

@@ -1,6 +1,6 @@
-package com.app.practice.mapper;
+package com.app.practice.dao;
 
-import com.app.practice.domain.dto.BoardDTO;
+import com.app.practice.domain.dao.BoardFileDAO;
 import com.app.practice.domain.vo.file.BoardFileVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -12,10 +12,10 @@ import java.util.UUID;
 
 @SpringBootTest
 @Slf4j
-public class BoardFileMapperTest {
+public class BoardFileDAOTests {
 
     @Autowired
-    private BoardFileMapper boardFileMapper;
+    private BoardFileDAO boardFileDAO;
 
 
     // 작성완료시 들어가는 파일테스트
@@ -28,15 +28,13 @@ public class BoardFileMapperTest {
         boardFileVO.setBoardFileOriginalName("테스트1.png");
         boardFileVO.setBoardFilePath("2023/10/23");
 
-        boardFileMapper.insertFile(boardFileVO);
+        boardFileDAO.insertFile(boardFileVO);
     }
-
 
     // 게시판 하나당 가지고 있는 파일 리스트
     @Test
     public void findFilesTest(){
-        List<BoardFileVO> boardFileVOS = boardFileMapper.findFiles(14L);
+        List<BoardFileVO> boardFileVOS = boardFileDAO.findFiles(14L);
         boardFileVOS.forEach(boardFileVO -> log.info(boardFileVO.getBoardFileOriginalName()));
     }
-
 }

@@ -11,7 +11,6 @@ public class BoardVO {
     private Long memberId;
     private String boardTitle;
     private String boardContent;
-    private LocalDateTime boardRegisterDate;
-    private LocalDateTime boardUpdateDate;
-
+    private String boardRegisterDate;
+    private String boardUpdateDate;
 }
