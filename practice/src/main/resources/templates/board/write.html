@@ -68,6 +68,22 @@
     let memberId = [[${session.memberId}]];
 </script>
 <script>
+    let $contents = $(".contents");
+
+
+    $contents.keyup((e) => {
+        let data = $contents.val();
+        if(data){
+            $(".contents-info ").css("display", "none");
+        }else {
+            console.log("인라인 블럭으로");
+            $(".contents-info ").css("display", "inline-block");
+        }
+    });
+
+
+
+    /*****************************************************************/
     globalThis.uuids = [];
     let files = [];
     FileList.prototype.forEach = Array.prototype.forEach;

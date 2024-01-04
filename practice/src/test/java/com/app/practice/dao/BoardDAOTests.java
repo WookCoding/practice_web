@@ -1,8 +1,8 @@
 package com.app.practice.dao;
 
 import com.app.practice.domain.dao.BoardDAO;
-import com.app.practice.domain.dto.BoardDTO;
 import com.app.practice.domain.vo.board.BoardVO;
+import com.app.practice.domain.vo.criteria.Criteria;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +43,8 @@ public class BoardDAOTests {
 
     @Test
     public void findBoardDTOs(){
-        List<BoardVO> boardVOS = boardDAO.findBoardVO();
+        Criteria criteria = new Criteria();
+        List<BoardVO> boardVOS = boardDAO.findBoardVOS(criteria);
 
         log.info("사이즈 : " + boardVOS.size());
         boardVOS.stream().forEach(boardVO -> log.info(boardVO.getBoardContent()));

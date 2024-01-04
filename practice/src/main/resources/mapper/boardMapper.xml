@@ -6,7 +6,7 @@
     <insert id="insertBoard" parameterType="boardVO">
         insert into tbl_board
         (board_title, board_content, member_id)
-        values (#{boardTitle}, #{boardContent}, #{memberId})
+        values (#{boardTitle}, #{boardContent}, #{memberId});
     </insert>
 
     <!-- 현재 시퀀스 가져오기 -->
@@ -15,9 +15,18 @@
     </select>
 
     <!-- 게시판 목록 가져오기 -->
-    <select id="findBoardVO" resultType="boardVO">
-        SELECT board_id, board_title, board_content, board_register_date, board_update_date, member_id
-        FROM tbl_board;
+    <select id="findBoardVOS" resultType="boardVO">
+        select board_id, board_title, board_content, board_register_date, board_update_date, member_id
+        from tbl_board
+        order by board_id desc
+        limit #{cri.startRow}, #{cri.amount};
+    </select>
+
+    <!--게시판 정보-->
+    <select id="findBoardVO" parameterType="long" resultType="boardVO">
+        select board_id, board_title, board_content, board_register_date, board_update_date, member_id
+        from tbl_board
+        where board_id = #{boardId}
     </select>
 
 </mapper>

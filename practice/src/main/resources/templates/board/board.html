@@ -13,13 +13,18 @@
         }
         
         .reply-write-container {
+            display: flex;
             position: relative;
+        }
+
+        .reply-content-box {
+            display: flex;
         }
 
         .reply-write {
             border : 1px solid rgb(207, 186, 240);
             border-radius: 16px;
-            padding : 0 0.4rem 0;
+            padding : 0 2.5rem 0 1rem;
             width: 100%;
             height: 30px;
         }
@@ -30,6 +35,42 @@
 
         .reply-register-button {
             position: absolute;
+            background: none;
+            right: 10px;
+            top: 5px;
+        }
+
+        .reply-content-wrap {
+            margin-top : 2rem;
+        }
+
+        .reply-content {
+            font-size: 0.78rem;
+            line-height: 1.75;
+            letter-spacing: -.0125rem;
+            color: #4e4e4e;
+        }
+
+        .reply-content-container {
+            display :flex; 
+
+        }
+
+        .reply-writer-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .register-date {
+            font-size : 0.69rem;
+            letter-spacing: -.0125rem;
+            color: #4e4e4e;
+        }
+
+        .line2 {
+            width :1px;
+            height : 30px;
+            background: #e1e1e1;
         }
     </style>
 </head>
@@ -41,11 +82,11 @@
                     <div class="content-box">
                         <div class="content-image-box">
                             <section class="content-image-container"> 
-                                <img src="https://static.cdn.soomgo.com/upload/media/39c653fb-6a96-4578-96dc-e239b7954b3f.jpg?webp=1">
+                                <img src="https://static.cdn.soomgo.com/upload/media/39c653fb-6a96-4578-96dc-e239b7954b3f.jpg?webp=1" class="board-image">
                             </section>
                         </div>
                         <div class="content-title-box">
-                            <h1 class="content-title">게시판 제목</h1>
+                            <h1 class="content-title" th:text="${boardDTO.boardTitle}">게시판 제목</h1>
                         </div>
                         <div class="writer-box">
                             <div class="writer-container">
@@ -53,8 +94,8 @@
                                     <a href="#" class="writer-info-box">
                                         <img class="writer-image normal-profile" src="/static/img/board/human.png">
                                         <div class="writer-info">
-                                            <span class="writer-name">작성자명</span>
-                                            <span class="write-date">작성날짜</span>
+                                            <span class="writer-name" th:text="${boardDTO.memberVO.memberName}">작성자명</span>
+                                            <span class="write-date" th:text="${boardDTO.boardRegisterDate}">작성날짜</span>
                                         </div>
                                     </a>
                                 </div>                                
@@ -65,7 +106,7 @@
                             <div class="board-content-container">
                                 <div class="board-content">
                                     <p class="content">
-                                        <span>안녕하세요^^ 나노코팅 전문업체 나노실드입니다.
+                                        <span th:text="${boardDTO.boardContent}">안녕하세요^^ 나노코팅 전문업체 나노실드입니다.
                                             포세린 타일 나노코팅을 약 100회 이상 시공하면서 안타까운 경우를 많이 보았는데요.
                                             포세린 타일에 찌든 때가 한참 들어 있는 이후에 코팅요청을 하신다는 것입니다.
                                             이런 경우 코팅비 이외에 정밀세척 비용이 추가되지요.
@@ -78,12 +119,36 @@
                         <div class="reply-wrap">
                             <div class="reply-box">
                                 <div class="reply-container">
-                                    <div class="reply-write-box">
+                                    <div class="reply-write-box" style="position: relative;">
                                         <div class="reply-write-container">
-                                            <input type="text" class="reply-write">
+                                            <input type="text" class="reply-write"  placeholder="댓글을 입력해주세요.">
                                             <div class="reply-register-button-box">
                                                 <div class="reply-register-button-container">
                                                     <button class="reply-register-button">등록</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="line">
+                                    <div class="reply-content-wrap">
+                                        <div class="reply-content-box">
+                                            <div class="reply-content-container">
+                                                <div class="reply-writer-box">
+                                                    <div class="reply-writer-container">
+                                                        <img src="/static/img/board/human.png" class="writer-image normal-profile">
+                                                    </div>
+                                                </div>
+                                                 <div class="reply-writer-content">
+                                                    <p class="reply-content"> 등록자 명</p>
+                                                    <div class="register-date-box">
+                                                        <p class="register-date">2011.00.00</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="line2"></div>
+                                            <div class="reply-content-wrap">
+                                                <div>
+                                                    <p>댓글내용</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,4 +162,14 @@
         </div>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script th:inline="javascript">
+    let memberId = [[${session.memberId}]];
+    let boardDTO = [[${boardDTO}]];
+    let boardFileVOS  = boardDTO.boardFileVOS;
+</script>
+<script>
+    let $image = $(".board-image");
+    $image.attr("src", `/file/display?fileName=${boardFileVOS[0].boardFilePath}/${boardFileVOS[0].boardFileUuid}_${boardFileVOS[0].boardFileOriginalName}`);
+</script>
 </html>

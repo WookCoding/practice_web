@@ -1,10 +1,9 @@
 package com.app.practice.domain.dao;
 
-import com.app.practice.domain.dto.BoardDTO;
 import com.app.practice.domain.vo.board.BoardVO;
+import com.app.practice.domain.vo.criteria.Criteria;
 import com.app.practice.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -26,5 +25,10 @@ public class BoardDAO {
     }
 
     // 게시글 목록 가져오기
-    public List<BoardVO> findBoardVO(){ return boardMapper.findBoardVO(); }
+    public List<BoardVO> findBoardVOS(Criteria criteria){ return boardMapper.findBoardVOS(criteria); }
+
+    // 게시글 정보 가져오기
+    public BoardVO findBoardVO(Long boardId){
+        return boardMapper.findBoardVO(boardId);
+    };
 }

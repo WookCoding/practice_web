@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <style>
+        .box {
+            position: relative;
+        }
+
+        .main-section {
+            display: flex;
+        }
+
+        .main-box {
+            width: 50%;
+        }
+
+
+        .header-box {
+            position: sticky;
+            top: 0px;
+            width: 100%;
+            height: 50px;
+            padding: 30px;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header-menu-box {
+            display: flex;
+            padding-top: 5px;
+        }
+
+        .menu {
+            cursor: pointer;
+            font-size: 15px;
+            margin-right: 1rem;
+        }
+
+        .menu:last-child {
+            margin-right: 0;
+        }
+
+        .header-title-box {
+            margin-left: 1.2rem;
+        }
+
+        .normal-section-size {
+            height: 618px;
+        }
+
+        .introduce-section-box {
+            padding: 10rem;
+        }
+
+        .sub-box {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: antiquewhite;
+            width: 50%;
+            height: 746px;
+        }
+
+        .introduce-flex {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .name {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-name {
+            padding-left: 5px;
+        }
+
+        .info-box {
+            margin-top: 2rem;
+            padding-left: 5px;
+        }
+
+        .info-text {
+            white-space: pre-line;
+            font-size: 15px;
+            margin-bottom: 0.3rem;
+        }
+
+        .image-box {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .man-image {
+            position: absolute;
+            top: 23%;
+            right: 23%;
+            width: 250px;
+        }
+
+        .scroll-button-box {
+            margin-top: 70px;
+        }
+
+        .scroll-button {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+        }
+
+        .scroll-button img {
+            width: 20px;
+        }
+
+        .scroll-text {
+            padding-left: 10px;
+        }
+
+        .common-section-box {
+            padding : 60px;
+        }
+        
+        .common-section-container {
+            display: flex;
+        }
+
+        .common-section-title-box {
+            max-width: 100%;
+        }
+
+        .title {
+            margin-bottom: 1rem;
+        }
+
+        .menu-icon {
+            width: 35px;
+            margin-left: 5px;
+        }
+
+    </style>
+    <title>메인 페이지</title>
+</head>
+
+<body>
+    <div class="box">
+        <section class="main-section">
+            <div class="main-box">
+                <div class="header-box">
+                    <div class="header-title-box">
+                        <h3 class="font-bold_5">이력서</h3>
+                    </div>
+                    <div class="header-menu-box">
+                        <p class="font-bold_4 menu">메뉴1</p>
+                        <p class="font-bold_4 menu">메뉴2</p>
+                        <p class="font-bold_4 menu">메뉴3</p>
+                    </div>
+                </div>
+                <div class="normal-section-size">
+                    <div class="introduce-section-box">
+                        <div class="introduce-flex">
+                            <h1 class="name">임종욱</h1>
+                            <h2 class="font-bold_4 job-name">웹 개발자</h2>
+                            <div class="info-box">
+                                <p class="info-text"><strong>Birth.             </strong>1997. 08. 01</p>
+                                <p class="info-text"><strong>Phone.          </strong>010-3675-8324</p>
+                                <p class="info-text"><strong>Email.           </strong>dnrwhddla@gmail.com</p>
+                                <p class="info-text"><strong>Address.      </strong>경기도 하남시 미사강변한강로 326</p>
+                                <p class="info-text"><strong>GitHub.        </strong><a href="https://github.com/WookCoding">https://github.com/WookCoding</a></p>
+                                <div class="scroll-button-box">
+                                    <div class="scroll-button">
+                                        <img src="/static/image/arrow.png">
+                                        <p class="scroll-text">자세히 보기</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="normal-section-size">
+                    <div class="common-section-box">
+                        <div class="common-section-container">
+                            <div class="common-section-title-box">
+                                <h2 class="title">자기소개</h2>
+                                <p class="info-text">[경험을 통해 성장하는 개발자]
+                                    새로운 경험을 하는 것에 대해서 거부감이 없습니다. 새로운 개발, 취미, 먹거리 등을 경험한다는 것은 실패 또한 있지만 성공 또한 있기에 그런 경험은 자신을 성장 시키는 기회라고 생각을 하기 때문입니다.
+                                    
+                                    [목표를 이루기 위한 빠른 실행력]
+                                    코딩을 배우겠다고 마음 먹은 날 사전조사를 통해 웹개발 학원을 등록하고, 기존에 다니던 학과에서 웹개발 방면으로 전과, 그리고 더 나아가 국비까지 드는 등 목표를 향한 빠른 실행력을 갖추었습니다.
+                                    
+                                    [문제를 해결하기 위한 창의적 사고]
+                                    요리 경험을 통해 얻은 창의적 사고는 프로젝트 중 발생하는 문제들을 다방면의 시각으로 해결하는 능력으로 활용하였습니다.</p>
+                            </div>
+                        </div>
+                        <div class="scroll-button-box">
+                            <div class="scroll-button">
+                                <img src="/static/image/arrow.png">
+                                <p class="scroll-text">자세히 보기</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>     
+                <div class="normal-section-size">
+                    <div class="common-section-box">
+                        <div class="common-section-container">
+                            <div class="common-section-title-box">
+                                <h2 class="title">자기소개</h2>
+                                <p class="info-text">[경험을 통해 성장하는 개발자]
+                                    새로운 경험을 하는 것에 대해서 거부감이 없습니다. 새로운 개발, 취미, 먹거리 등을 경험한다는 것은 실패 또한 있지만 성공 또한 있기에 그런 경험은 자신을 성장 시키는 기회라고 생각을 하기 때문입니다.
+                                    
+                                    [목표를 이루기 위한 빠른 실행력]
+                                    코딩을 배우겠다고 마음 먹은 날 사전조사를 통해 웹개발 학원을 등록하고, 기존에 다니던 학과에서 웹개발 방면으로 전과, 그리고 더 나아가 국비까지 드는 등 목표를 향한 빠른 실행력을 갖추었습니다.
+                                    
+                                    [문제를 해결하기 위한 창의적 사고]
+                                    요리 경험을 통해 얻은 창의적 사고는 프로젝트 중 발생하는 문제들을 다방면의 시각으로 해결하는 능력으로 활용하였습니다.</p>
+                            </div>
+                        </div>
+                        <div class="scroll-button-box">
+                            <div class="scroll-button">
+                                <img src="/static/image/arrow.png">
+                                <p class="scroll-text">자세히 보기</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+            <div class="sub-box normal-section-size">
+                <div class="image-box">
+                    <img src="/static/image/man.jpg" class="man-image"> 
+                </div>
+            </div>
+            <div class="menu-icon-box">
+                <div>
+                    <img class="menu-icon" src="/static/image/menu.png">
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script>
+// 스크롤 이벤트
+// 572
+    $(".scroll-button").click(function() {
+        let index = $(".scroll-button").index(this) + 1;
+        window.scrollTo({top: 572 * index, behavior:'smooth'});
+    });
+
+//  메뉴 버튼 클릭시
+    $(".menu").click((e) => {
+        $(".main-box").fadeOut();
+        $(".sub-box").css("width", "97%");
+        $(".sub-box").css({"right" : "0", "transition": "1s"});
+        $(".man-image").fadeOut();
+    });
+
+    //  메뉴 버튼 클릭시
+    $(".menu-icon").click((e) => {
+        $(".main-box").fadeIn();
+        $(".sub-box").css("width", "50%");
+        $(".sub-box").css({"right" : "0", "transition": "1s"});
+        $(".man-image").fadeIn();
+    });
+</script>
+</html>

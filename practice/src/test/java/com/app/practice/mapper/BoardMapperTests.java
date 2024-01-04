@@ -1,8 +1,7 @@
 package com.app.practice.mapper;
 
-import com.app.practice.domain.dto.BoardDTO;
 import com.app.practice.domain.vo.board.BoardVO;
-import com.app.practice.domain.vo.member.MemberVO;
+import com.app.practice.domain.vo.criteria.Criteria;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,18 +31,20 @@ public class BoardMapperTests {
     @Test
     public void currentSequenceTest(){
 
-        BoardVO boardVO = new BoardVO();
-        boardVO.setBoardContent("테스트 내용 4");
-        boardVO.setBoardTitle("테스트 제목 4");
-        boardVO.setMemberId(1L);
-        boardMapper.insertBoard(boardVO);
-        
-        log.info("등록된 게시판 번호 : " + boardMapper.currentSequence());
+        for (int i = 0; i < 100; i++) {
+            BoardVO boardVO = new BoardVO();
+            boardVO.setBoardContent("테스트 내용" + i);
+            boardVO.setBoardTitle("테스트 제목 4" + i);
+            boardVO.setMemberId(1L);
+            boardMapper.insertBoard(boardVO);
+        }
+
     }
 
     @Test
     public void findBoardDTOs(){
-        List<BoardVO> boardVOS = boardMapper.findBoardVO();
+        Criteria criteria = new Criteria();
+        List<BoardVO> boardVOS = boardMapper.findBoardVOS(criteria);
 
         log.info("사이즈 : " + boardVOS.size());
         boardVOS.stream().forEach(boardVO -> log.info(boardVO.getBoardContent()));

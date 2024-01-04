@@ -28,17 +28,7 @@
                     </div>
                     <article class="content-box">
                         <ul class="content-ul">
-<!--                            <li>-->
-<!--                                <section class="content-container">-->
-<!--                                    <a href="#">-->
-<!--                                        <div class="content-image-box">-->
-<!--                                            <img src="https://static.cdn.soomgo.com/upload/community/2b574ac2-92d3-45b1-8b5a-fdc622749579.png?webp=1">-->
-<!--                                        </div>-->
-<!--                                        <h3 class="content-title">게시판 제목</h3>-->
-<!--                                        <p class="content-writer">작성자명</p>-->
-<!--                                    </a>-->
-<!--                                </section>-->
-<!--                            </li>-->
+                            <!-- 게시판 리스트 -->
                         </ul>
                     </article>
                 </section>
@@ -49,11 +39,31 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script th:inline="javascript">
     let memberId = [[${session.memberId}]];
-    let boardList = [[${boardDTOS}]];
-    console.log(boardList);
 </script>
 <script>
-    loadBoardList(boardList);
+    let page = 1;
+
+    const boardService =(function(){
+        function getList(page){
+            $.ajax({
+                url : "/board/list/" + page,
+                success : function (list){
+                    $(".content-ul").append(loadBoardList(list));
+                }
+            });
+        }
+
+        return {getList : getList}
+    })();
+    boardService.getList(page);
+    $(window).scroll(
+        function() {
+            if ($(window).scrollTop() + 20 >= $(document).height() - $(window).height()) {
+                page++;
+                boardService.getList(page);
+            }
+        }
+    );
 
     function loadBoardList(boardList){
         let text = '';
@@ -64,7 +74,7 @@
             text += `
                             <li>
                                 <section class="content-container">
-                                    <a href="/board/board?boardId=${i}">
+                                    <a href="/board/board?boardId=${boardDTO.boardId}">
                                         <div class="content-image-box">
                                         `;
             if(boardFileDTOS.length == 0){
@@ -79,14 +89,14 @@
 
            text+=  `                            </div>
                                         <h3 class="content-title">${boardDTO.boardTitle}</h3>
-                                        <p class="content-writer">${boardDTO.memberId}</p>
+                                        <p class="content-writer">${boardDTO.memberVO.memberName}</p>
                                     </a>
                                 </section>
                             </li>
     `;
         });
 
-        $(".content-ul").append(text);
+        return text;
     }
 
 </script>

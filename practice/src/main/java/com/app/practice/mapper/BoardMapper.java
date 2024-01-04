@@ -1,8 +1,9 @@
 package com.app.practice.mapper;
 
-import com.app.practice.domain.dto.BoardDTO;
 import com.app.practice.domain.vo.board.BoardVO;
+import com.app.practice.domain.vo.criteria.Criteria;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,6 +17,8 @@ public interface BoardMapper {
     public Long currentSequence();
 
     // 게시판 목록
-    public List<BoardVO> findBoardVO();
+    public List<BoardVO> findBoardVOS(@Param("cri") Criteria criteria);
 
+    //게시판 정보
+    public BoardVO findBoardVO(Long boardId);
 }

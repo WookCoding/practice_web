@@ -1,6 +1,7 @@
 package com.app.practice.service;
 
 import com.app.practice.domain.dto.BoardDTO;
+import com.app.practice.domain.vo.criteria.Criteria;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,8 @@ public class BoardServiceTests {
 
     @Test
     public void boardListTest(){
-        List<BoardDTO> boardDTOS = boardService.boardList();
+        Criteria criteria = new Criteria();
+        List<BoardDTO> boardDTOS = boardService.boardList(criteria);
     }
 
 }

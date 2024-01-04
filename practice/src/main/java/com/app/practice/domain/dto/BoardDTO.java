@@ -2,6 +2,7 @@ package com.app.practice.domain.dto;
 
 import com.app.practice.domain.vo.board.BoardVO;
 import com.app.practice.domain.vo.file.BoardFileVO;
+import com.app.practice.domain.vo.member.MemberVO;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,7 @@ public class BoardDTO {
     private String boardUpdateDate;
 
     private List<BoardFileVO> boardFileVOS;
+    private MemberVO memberVO;
 
     public BoardVO toBoardVO(){
         BoardVO boardVO = new BoardVO();
